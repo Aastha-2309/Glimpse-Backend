@@ -9,6 +9,9 @@ const path = require("path");
 
 const futureNoteRoutes = require('./Routes/futureNotes');
 
+const compression = require('compression');
+
+
 
 require('dotenv').config();
 require('./Models/db');
@@ -28,6 +31,9 @@ app.use('/auth', AuthRouter);
 
 app.use("/api/eras", eraRoutes);
 app.use('/api/future-notes', futureNoteRoutes);
+
+app.use(compression());
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`)
